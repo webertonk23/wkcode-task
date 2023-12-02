@@ -17,3 +17,11 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::apiResource('paineis', 'PainelController')->parameters([
+    'paineis' => "painel",
+]);
+
+Route::apiResource('equipes', 'EquipesController')->parameters([
+    'equipes' => "equipe",
+]);
