@@ -1,21 +1,26 @@
 import { Component, OnInit } from '@angular/core';
-import { Painel } from '../../../inetrfaces/Painel';
-import { PainelService } from '../../../services/painel.service';
-import { Equipe } from '../../../inetrfaces/Equipe';
-import { EquipeService } from '../../../services/equipe.service';
+import { Painel } from '../inetrfaces/Painel';
+import { Equipe } from '../inetrfaces/Equipe';
+import { PainelService } from '../services/painel.service';
+import { EquipeService } from '../services/equipe.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-paineis',
   templateUrl: './paineis.component.html',
   styleUrl: './paineis.component.css'
 })
-export class PaineisComponent implements OnInit{
+export class PaineisComponent implements OnInit {
   allPaineis: Painel[] = []
   paineis: Painel[] = []
 
   equipes: Equipe[] = []
 
-  constructor(private paineisService: PainelService, private equipesService: EquipeService) { }
+  constructor(
+    private paineisService: PainelService, 
+    private equipesService: EquipeService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.paineisService.getPaineis().subscribe((response) => {
@@ -39,7 +44,7 @@ export class PaineisComponent implements OnInit{
       this.equipes = data;
 
       console.log(this.equipes);
-    })   
+    })
   }
 
   pesquisa(e: Event): void {
@@ -52,7 +57,7 @@ export class PaineisComponent implements OnInit{
   }
 
   abrirPainel(id:number){
-    console.log(id);
+    this.router.navigate(['/paineis', id]);
   }
 
   addPainel(equipe_id: number){

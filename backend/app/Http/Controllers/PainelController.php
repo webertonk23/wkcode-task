@@ -61,7 +61,9 @@ class PainelController extends Controller
      */
     public function show(PainelModel $painel)
     {
-        return response()->json($painel);
+        $painel->load('categorias');
+        
+        return response()->json(['data' => $painel]);
     }
 
     /**

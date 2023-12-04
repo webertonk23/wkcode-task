@@ -12,12 +12,13 @@
         </a>
     </div>
     <div class="sidebar-wrapper">
-        <ul class="nav">
-            <li class="active">
-                <a routerLink="/"><i class="fa fa-tachometer"></i> <span>Dashboard</span></a>
+        <ul class="nav" *ngFor="let page of listPages">
+            <li class="{{page.active}}">
+                <a routerLink="{{page.route}}"><i class="{{page.icon}}"></i> <span>{{page.title}}</span></a>
             </li>
+        </ul>
 
-            <li>
+            <!-- <li>
                 <a routerLink="/paineis"><i class="nc-icon nc-layout-11"></i><span>Paineis</span></a>
             </li>
             <li>
@@ -33,6 +34,6 @@
             <li>
                 <a href="/configuracoes"><i class="nc-icon nc-settings-gear-65"></i> <span>Configurações</span></a>
             </li>
-        </ul>
+        </ul> -->
     </div>
 </div>
