@@ -21,7 +21,9 @@ class CreateTableTasks extends Migration
             $table->longText('descricao');
             $table->integer('status')->default(0)->comment('1 -> concluido 0 -> aberto');
             $table->string('situacao');
-            $table->foreignId('user_id')->references('id')->on('user');
+            $table->foreignId('user_id')->nullable()->references('id')->on('users');
+            $table->foreignId('painel_id')->references('id')->on('paineis');
+            $table->foreignId('categoria_id')->references('id')->on('categorias');            
         });
     }
 

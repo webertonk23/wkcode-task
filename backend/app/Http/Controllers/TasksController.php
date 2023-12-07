@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\TasksModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TasksController extends Controller
 {
@@ -24,7 +26,31 @@ class TasksController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $dados = $request->input();
+        $dados['situacao'] = 'aguardando_inicio'; 
+
+        $task = DB::transaction(function() use($dados){
+           return TasksModel::create($dados);
+        });
+
+
+        $data = $task ? [
+            'mensage' => [
+                'title' => 'Sucesso!',
+                'icon' => 'success',
+                'text' => 'Painel criado com sucesso!'
+            ],
+            'dados' => $task
+        ] : [
+            'mensage' => [
+                'title' => 'Falha!',
+                'icon' => 'error',
+                'text' => 'Não foi possivel criar o painel!'
+            ],
+            'dados' => $task
+        ];
+
+        return response()->json($data);
     }
 
     /**

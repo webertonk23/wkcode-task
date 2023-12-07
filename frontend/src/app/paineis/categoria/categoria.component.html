@@ -1,0 +1,19 @@
+<div class="bg-dark text-white position-modal">
+    <div class='modal-body'>
+        <h5 class="modal-title">{{titleText}}</h5>
+        <form [formGroup]="form">
+            <div class="form-group">
+                <label for="nome" class="form-label">Categoria</label>
+                <input type="text" id="nome" class="form-control" [(ngModel)]="categoria!.nome" formControlName="nome">
+            </div>
+            <div *ngIf="form.get('nome')?.errors?.['required'] && form.get('nome')?.touched">
+                <small class="text-danger">Este campo é obrigatório</small>
+            </div>
+        </form>
+    </div>
+    
+    <div class='modal-footer'>
+        <button #focar type="button" class="btn btn-light" (click)="activeModal.close()">Fechar</button>
+        <button type="button" class="btn btn-primary" (click)="salvar()">Salvar</button>
+    </div>
+</div>

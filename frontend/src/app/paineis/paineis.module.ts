@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
 
 import { TaskComponent } from './task/task.component';
 import { PainelComponent } from './painel/painel.component';
 import { PaineisComponent } from './paineis.component';
+import { CategoriaComponent } from './categoria/categoria.component';
 
 
 
@@ -13,11 +15,14 @@ import { PaineisComponent } from './paineis.component';
   declarations: [
     TaskComponent,
     PainelComponent,
-    PaineisComponent
+    PaineisComponent,
+    CategoriaComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
+    ToastrModule.forRoot(),
   ],
   exports: [
     PaineisComponent

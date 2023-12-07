@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CategoriasModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CategoriasController extends Controller
 {
@@ -27,7 +28,29 @@ class CategoriasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $dados = $request->input();
+
+        $categoria = DB::transaction(function() use($dados){
+           return CategoriasModel::create($dados);
+        });
+
+
+        $data = $categoria ? [
+            'mensage' => [
+                'title' => 'Sucesso!',
+                'icon' => 'success',
+                'text' => 'Categoria criada com sucesso!'
+            ],
+            'dados' => $categoria
+        ] : [
+            'mensage' => [
+                'title' => 'Falha!',
+                'icon' => 'error',
+                'text' => 'Não foi possivel criar o categoria!'
+            ],
+            'dados' => $categoria
+        ];
+
     }
 
     /**

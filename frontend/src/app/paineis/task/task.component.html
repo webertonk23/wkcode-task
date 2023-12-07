@@ -1,23 +1,21 @@
-<div class="modal bg-dark" tabindex="-1" #modalTask>
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-body">
-                <h5 class="modal-title">{{titleText}}</h5>
-                <form>
-                    <div class="form-group">
-                        <label for="" class="form-label">Titulo</label>
-                        <input type="text" class="form-control" [(ngModel)]="task!.titulo!">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="" class="form-label">Descrição</label>
-                        <textarea [(ngModel)]="task!.descricao!"></textarea>
-                    </div>
-                </form>
+<div class="bg-dark text-white position-modal">
+    <div class='modal-body'>
+        <h5 class="modal-title">{{titleText}}</h5>
+        <form [formGroup]="taskForm">
+            <div class="form-group">
+                <label for="" class="form-label">Titulo</label>
+                <input type="text" class="form-control" [(ngModel)]="task!.titulo" formControlName="titulo">
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Savar</button>
+    
+            <div class="form-group">
+                <label for="" class="form-label">Descrição</label>
+                <textarea [(ngModel)]="task!.descricao" class="form-control" formControlName="descricao"></textarea>
             </div>
-        </div>
+        </form>
+    </div>
+    
+    <div class='modal-footer'>
+        <button #focar type="button" class="btn btn-ligth" (click)="activeModal.close()">Fechar</button>
+        <button type="button" class="btn btn-primary" (click)="salvarTask()">Savar</button>
     </div>
 </div>

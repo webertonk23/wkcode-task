@@ -10,6 +10,8 @@ import { NavbarComponent } from './components/part/navbar/navbar.component';
 import { HomeComponent } from './components/pages/home/home.component';
 import { EquipesComponent } from './components/pages/equipes/equipes.component';
 import { PaineisModule } from './paineis/paineis.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -26,7 +28,9 @@ import { PaineisModule } from './paineis/paineis.module';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    PaineisModule
+    PaineisModule,
+    NgbModule,
+    BrowserAnimationsModule
   ],
   providers: [
     // provideClientHydration()

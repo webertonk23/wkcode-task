@@ -19,10 +19,33 @@ class TasksModel extends Model
         'descricao',
         'status',
         'situacao',
+        'painel_id',
+        'categoria_id',
     ];
 
-    public function usuario(){
+    const situacao = [
+        'parado' => 'Parado',
+        'executando' => 'Execultando',
+        'concluido' => 'Concluido',
+        'aguardando_inicio' => 'Aguardando inicio'
+    ];
+
+    public function usuario()
+    {
         return $this->belongsTo(User::class, 'user_id');
     }
 
+    public function painel()
+    {
+        return $this->belongsTo(PainelModel::class, 'painel_id');
+    }
+
+    public function categoria()
+    {
+        return $this->belongsTo(CategoriasModel::class, 'categoria_id');
+    }
+
+    public function detalhes()
+    {
+    }
 }

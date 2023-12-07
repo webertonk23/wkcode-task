@@ -25,3 +25,11 @@ Route::apiResource('paineis', 'PainelController')->parameters([
 Route::apiResource('equipes', 'EquipesController')->parameters([
     'equipes' => "equipe",
 ]);
+
+Route::apiResource('tasks', 'TasksController')->parameters([
+    'tasks' => "task",
+]);
+
+Route::apiResource('categorias', 'CategoriasController')->parameters([
+    'categorias' => "categoria",
+]);
