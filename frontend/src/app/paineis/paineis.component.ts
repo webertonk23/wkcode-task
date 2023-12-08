@@ -23,9 +23,9 @@ export class PaineisComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    
     this.paineisService.getPaineis().subscribe((response) => {
       const data = response.data
-
       data.map((item) => {
         item.created_at = new Date(item.created_at!).toLocaleString('pt-BR');
       })

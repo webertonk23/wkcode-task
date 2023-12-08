@@ -1,4 +1,11 @@
 .position-modal {
-    z-index: 1060 !important; 
+    z-index: 1060 !important;
 }
 
+.custom-modal-right {
+    position: absolute;
+    right: 0;
+    height: 100vh;
+    margin: 0;
+    width: 50%;
+}

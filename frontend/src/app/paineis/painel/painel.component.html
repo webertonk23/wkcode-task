@@ -1,17 +1,23 @@
-<div class="col-12" *ngIf="painel">
+<div class="col-12 p-0 m-0" *ngIf="painel">
 
     <h2 class="text-muted">{{painel.titulo}}</h2>
 
     <div class="d-flex overflow-auto">
-
-        <div class="col-sm-4 text-white m-1 p-1 rounded bg-dark" *ngFor="let categoria of painel.categorias">
-            <div class="card-title text-center py-2">
-                <small class=""><b>{{categoria.nome}}</b></small>
+        <div
+            class="col-sm-4 text-muted m-1 rounded card bg-transparent"
+            *ngFor="let categoria of painel.categorias"
+             
+        >
+            <div class="card-title text-center pt-3">
+                <strong class=""><b>{{categoria.nome}}</b></strong>
             </div>
 
-            <div class="col-painel">
+            <div class="col-painel card-body">
                 <div id="taskCol{{categoria.id}}" *ngFor="let task of categoria.tasks">
-                    <div class="card card-body bg-transparent">
+                    <div
+                        class="card card-body"
+                        (click)="showTask(task.id!)"
+                    >
                         <h5 class="">
                             {{task.titulo}}
                         </h5>
@@ -25,8 +31,8 @@
             </div>
         </div>
 
-        <div class="col-3 m-1 p-1 rounded bg-transparent">
-            <div class="card card-body"
+        <div class="col-3 m-1 p-1 rounded ">
+            <div class="card card-body bg-transparent"
             (click)="addCat(painel.id!)"
             style="border: 2px dashed rgb(108, 117, 125, 0.5)">
                 <h2 class="text-center py-2 text-muted "><i class="fa fa-plus"></i></h2>

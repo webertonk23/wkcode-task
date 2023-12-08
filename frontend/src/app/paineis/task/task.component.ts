@@ -19,6 +19,8 @@ export class TaskComponent implements OnInit {
   @Input() painel_id!: number;
   @Input() categoria_id!: number;
 
+  @Input() task_id!: number;
+
   task?: Task = {
     titulo: '',
     descricao: ''
@@ -35,9 +37,15 @@ export class TaskComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    if (this.task_id) {
+      this.taskServices.getTask(this.task_id).subscribe((result) => {
+        this.task = result.data;
+      });
+    }
+
     this.taskForm = this.fb.group({
-      titulo: ['', Validators.required],
-      descricao: ['', Validators.required],
+      titulo: [this.task?.titulo ?? '', Validators.required],
+      descricao: [this.task?.descricao ?? '', Validators.required],
     });
   }
 
@@ -50,20 +58,37 @@ export class TaskComponent implements OnInit {
       this.toastr.success('Informações faltando no formulario!', 'Falha');
       return;
     }
-    
-    // Alterado para utilizar o await corretamente
+
+
     try {
       await this.taskServices.createTask(formData).toPromise();
-      
-      // Removido o await da navegação
-      this.router.navigate(['/paineis', this.painel_id]);
-      
+
       this.activeModal.close('success');
-      
+
       this.toastr.success('Sucesso!', 'Sucesso');
     } catch (error) {
       console.error(error);
-      this.toastr.error('Erro ao salvar a tarefa!', 'Erro'); 
+      this.toastr.error('Erro ao salvar a tarefa!', 'Erro');
+    }
+  }
+
+  async editarTask() {
+    const formData = this.taskForm.value;
+
+    if (this.taskForm.invalid) {
+      this.toastr.success('Informações faltando no formulario!', 'Falha');
+      return;
+    }
+
+    try {
+      await this.taskServices.updateTask(this.task_id, formData).toPromise();
+
+      this.activeModal.close('success');
+
+      this.toastr.success('Sucesso!', 'Sucesso');
+    } catch (error) {
+      console.error(error);
+      this.toastr.error('Erro ao editar a tarefa!', 'Erro');
     }
   }
 }

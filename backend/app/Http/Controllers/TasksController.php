@@ -59,9 +59,11 @@ class TasksController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(TasksModel $task)
     {
-        //
+        // $task->load('categorias.tasks');
+        
+        return response()->json(['data' => $task]);
     }
 
     /**
@@ -71,9 +73,32 @@ class TasksController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, TasksModel $task)
     {
-        //
+        $dados = $request->input();
+
+        $task = DB::transaction(function() use($dados, $task){
+           return $task->update($dados);
+        });
+
+
+        $data = $task ? [
+            'mensage' => [
+                'title' => 'Sucesso!',
+                'icon' => 'success',
+                'text' => 'Painel criado com sucesso!'
+            ],
+            'dados' => $task
+        ] : [
+            'mensage' => [
+                'title' => 'Falha!',
+                'icon' => 'error',
+                'text' => 'Não foi possivel criar o painel!'
+            ],
+            'dados' => $task
+        ];
+
+        return response()->json($data);
     }
 
     /**

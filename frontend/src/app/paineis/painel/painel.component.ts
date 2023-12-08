@@ -17,6 +17,14 @@ export class PainelComponent implements OnInit {
   painel!: Painel;
   titleModalTask = '';
 
+  modalOptions = {
+    centered: true,
+    scrollable: true,
+    size: 'lg',
+    windowClas: "custom-modal-right",
+    backdrop: true,
+  }
+
   constructor(
     private paineisService: PainelService,
     private router: Router,
@@ -28,27 +36,27 @@ export class PainelComponent implements OnInit {
 
   ngOnInit(): void {
     this.getTasks();
-    
+
   }
-  
-  getTasks(){
+
+  getTasks() {
     const id = Number(this.route.snapshot.paramMap.get("id"))
-  
+
     this.paineisService.getPainel(id).subscribe((item) => {
-      this.painel = item.data  
+      this.painel = item.data
     });
   }
 
   novaTask(painel_id: number, categoria_id: number) {
 
-    const modalRef = this.modalService.open(TaskComponent, { centered: true });
+    const modalRef = this.modalService.open(TaskComponent, this.modalOptions);
     modalRef.componentInstance.titleText = 'Nova Task';
     modalRef.componentInstance.painel_id = painel_id;
     modalRef.componentInstance.categoria_id = categoria_id;
-    
+
     modalRef.result.then((result) => {
       console.log(result);
-      
+
       if (result === 'success') {
         this.getTasks();
       }
@@ -57,14 +65,30 @@ export class PainelComponent implements OnInit {
     });
   }
 
-  addCat(painel_id: number){
+  showTask(task_id: number) {
+    const modalRef = this.modalService.open(TaskComponent, this.modalOptions);
+    modalRef.componentInstance.titleText = 'ver Task';
+    modalRef.componentInstance.task_id = task_id;
+
+    modalRef.result.then((result) => {
+      console.log(result);
+
+      if (result === 'success') {
+        this.getTasks();
+      }
+    }).catch((reason) => {
+      console.log(`Dismissed with reason: ${reason}`);
+    });
+  }
+
+  addCat(painel_id: number) {
     const modalRef = this.modalService.open(CategoriaComponent, { centered: true });
     modalRef.componentInstance.titleText = 'Nova categoria';
     modalRef.componentInstance.painel_id = painel_id;
-    
+
     modalRef.result.then((result) => {
       console.log(result);
-      
+
       if (result === 'success') {
         this.getTasks();
       }
