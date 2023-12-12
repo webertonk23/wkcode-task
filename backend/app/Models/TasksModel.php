@@ -21,6 +21,12 @@ class TasksModel extends Model
         'situacao',
         'painel_id',
         'categoria_id',
+        'previsao_inicio',
+        'previsao_termino',
+        'pevisao_duracao',
+        'data_inicio',
+        'data_termino',
+        'duracao',
     ];
 
     const situacao = [

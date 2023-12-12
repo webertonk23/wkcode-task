@@ -21,10 +21,47 @@
                 </div>
             </div>
 
-            <div class="col-sm-3">
-                <div class="form-group">
-                    <small for="" class="form-label">Descrição</small>
-                    <input [(ngModel)]="task!.descricao" class="form-control" formControlName="descricao">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <small for="" class="form-label">previsão de inicio</small>
+                        <input type="date" [(ngModel)]="task!.previsao_inicio" class="form-control" formControlName="previsao_inicio">
+                    </div>
+                </div>
+    
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <small for="" class="form-label">previsão de termino</small>
+                        <input type="date" [(ngModel)]="task!.previsao_termino" class="form-control" formControlName="previsao_termino">
+                    </div>
+                </div>
+    
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <small for="" class="form-label">previsão de duração<output></output></small>
+                        <input type="time" [(ngModel)]="task!.pevisao_duracao" class="form-control" formControlName="pevisao_duracao">
+                    </div>
+                </div>
+    
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <small for="" class="form-label">Inicio</small>
+                        <input type="date" [(ngModel)]="task!.data_inicio" class="form-control" formControlName="data_inicio">
+                    </div>
+                </div>
+    
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <small for="" class="form-label">Termino</small>
+                        <input type="date" [(ngModel)]="task!.data_termino" class="form-control" formControlName="data_termino">
+                    </div>
+                </div>
+    
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <small for="" class="form-label">Duração</small>
+                        <input type="time" [(ngModel)]="task!.duracao" class="form-control" formControlName="duracao">
+                    </div>
                 </div>
             </div>
         </form>

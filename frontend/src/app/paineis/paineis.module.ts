@@ -8,9 +8,6 @@ import { PainelComponent } from './painel/painel.component';
 import { PaineisComponent } from './paineis.component';
 import { CategoriaComponent } from './categoria/categoria.component';
 
-
-
-
 @NgModule({
   declarations: [
     TaskComponent,

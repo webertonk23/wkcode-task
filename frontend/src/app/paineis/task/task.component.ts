@@ -21,9 +21,17 @@ export class TaskComponent implements OnInit {
 
   @Input() task_id!: number;
 
+
+
   task?: Task = {
     titulo: '',
-    descricao: ''
+    descricao: '',
+    previsao_inicio: '',
+    previsao_termino: '',
+    pevisao_duracao: '',
+    data_inicio: '',
+    data_termino: '',
+    duracao: '',
   };
 
   taskForm!: FormGroup;
@@ -36,16 +44,41 @@ export class TaskComponent implements OnInit {
     private toastr: ToastrService
   ) { }
 
+  toDate(date: string) {
+    const data = new Date(date); 
+
+    const ano = data.getFullYear();
+    const mes = (data.getMonth() + 1).toString().padStart(2, '0');
+    const dia = data.getDate().toString().padStart(2, '0');
+
+    const dataFormatada = `${ano}-${mes}-${dia}`;
+
+    return dataFormatada;
+  }
+
   ngOnInit(): void {
     if (this.task_id) {
       this.taskServices.getTask(this.task_id).subscribe((result) => {
         this.task = result.data;
+
+        this.task.previsao_inicio = this.task.previsao_inicio ? this.toDate(this.task.previsao_inicio!) : '';
+        this.task.previsao_termino = this.task.previsao_termino ? this.toDate(this.task.previsao_termino!) : '';
+        this.task.data_inicio = this.task.data_inicio ? this.toDate(this.task.previsao_termino!) : '';
+        this.task.data_termino = this.task.data_termino ? this.toDate(this.task.previsao_termino!) : '';
       });
+
+      console.log(this.task_id)
     }
 
     this.taskForm = this.fb.group({
       titulo: [this.task?.titulo ?? '', Validators.required],
       descricao: [this.task?.descricao ?? '', Validators.required],
+      previsao_inicio: [this.task?.descricao ?? ''],
+      previsao_termino: [this.task?.descricao ?? ''],
+      pevisao_duracao: [this.task?.descricao ?? ''],
+      data_inicio: [this.task?.descricao ?? ''],
+      data_termino: [this.task?.descricao ?? ''],
+      duracao: [this.task?.descricao ?? ''],
     });
   }
 
