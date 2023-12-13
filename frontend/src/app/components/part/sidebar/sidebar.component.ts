@@ -7,7 +7,7 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
   styleUrl: './sidebar.component.css'
 })
 export class SidebarComponent implements OnInit{
-  currentRoute: string = '';
+  currentRoute: string = '/';
 
   listPages  = [
     {
