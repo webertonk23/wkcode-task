@@ -1,1 +1,46 @@
-<p>pessoas works!</p>
+<!-- Search -->
+<div class="card card-body">
+  <div class="align-items-center">
+    <div class="nav-item d-flex align-items-center">
+      <input
+        type="text"
+        class="form-control border-0 shadow-none"
+        placeholder="pesquise por nome ou cpf / cnpj"
+        (keydown)="pesquisa($event)"
+      />
+      <i class="bx bx-search fs-4 lh-0"></i>
+      <i class="bx bx-plus fs-4 mx-2" (click)="addPessoa()"></i>
+    </div>
+  </div>
+</div>
+
+<div class="card card-body my-2">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>#Id</th>
+        <th>Nome</th>
+        <th>Cpf / Cnpj</th>
+        <th>Vinculo</th>
+        <th>Açoes</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let item of pessoas">
+        <td>{{item.id}}</td>
+        <td>{{item.nome}}</td>
+        <td>{{item.cpf_cnpj}}</td>
+        <td>
+          <span class="badge bg-primary" *ngIf="item.cliente">Cli</span>
+          <span class="badge bg-primary" *ngIf="item.fornecedor">Forn</span>
+          <span class="badge bg-primary" *ngIf="item.funcionario">Func</span>
+        </td>
+        <td>
+          <button type="button" class="btn btn-primary mx-1" ngbTooltip="Editar" (click)="editePessoa(item.id!)"><i class="fa fa-edit"></i></button>
+          <button type="button" class="btn btn-danger mx-1" ngbTooltip="Deletar" (click)="deletePessoa(item.id!)"><i class="fa fa-trash"></i></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

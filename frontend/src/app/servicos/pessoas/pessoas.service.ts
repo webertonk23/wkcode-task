@@ -2,36 +2,36 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { environment } from '../../environments/environment';
-import { Pessoa } from './pessoa.interface';
+import { environment } from '../../../environments/environment';
+import { Pessoa } from '../../interfaces/pessoa.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PessoasService {
-  private apiUrl = `${environment.apiUrl}/api/paineis`
+  private apiUrl = `${environment.apiUrl}/api/pessoas`
 
   constructor(private http: HttpClient) { }
 
-  getPaineis(): Observable<Pessoa[]> {
+  getPessoas(): Observable<Pessoa[]> {
     return this.http.get<Pessoa[]>(this.apiUrl);
   }
 
-  getPainel(id: number): Observable<Pessoa> {
+  getPessoa(id: number): Observable<Pessoa> {
     const url = `${this.apiUrl}/${id}`;
     return this.http.get<Pessoa>(url);
   }
 
-  createPaienl(formData: FormData): Observable<FormData> {
+  createPessoa(formData: FormData): Observable<FormData> {
     return this.http.post<FormData>(this.apiUrl, formData);
   }
 
-  updatePainelt(id: number, formData: FormData): Observable<FormData> {
+  updatePessoa(id: number, formData: FormData): Observable<FormData> {
     const url = `${this.apiUrl}/${id}`;
     return this.http.put<FormData>(url, formData);
   }
 
-  deletePainel(id: number) {
+  deletePessoa(id: number) {
     const url = `${this.apiUrl}/${id}`;
     return this.http.delete(url);
   }

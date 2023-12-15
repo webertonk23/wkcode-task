@@ -1,0 +1,194 @@
+<div class="position-modal">
+  <div class="modal-header">
+    <h5 class="modal-title">{{titleText}}</h5>
+  </div>
+  <div class='modal-body'>
+    <form [formGroup]="pessoaForm">
+      <div class="row">
+        <div class="col-sm-8">
+          <div class="form-group">
+            <label for="" class="form-label">Nome</label>
+            <input type="text" class="form-control" [(ngModel)]="pessoa!.nome" formControlName="nome"
+              placeholder="Nome">
+            <div *ngIf="pessoaForm.get('nome')?.errors?.['required'] && pessoaForm.get('nome')?.touched">
+              <small class="text-danger">Este campo é obrigatório</small>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4" style="padding-top: 30px;">
+          <input type="checkbox" class="btn-check" id="check-cliente" [(ngModel)]="pessoa!.cliente" formControlName="cliente" autocomplete="off">
+          <label class="btn btn-sm btn-outline-info mx-2" for="check-cliente">Cli</label>
+
+          <input type="checkbox" class="btn-check" id="check-fornecedor" [(ngModel)]="pessoa!.fornecedor" formControlName="fornecedor" autocomplete="off">
+          <label class="btn btn-sm btn-outline-info mx-2" for="check-fornecedor">For</label>
+
+          <input type="checkbox" class="btn-check" id="check-funcionario" [(ngModel)]="pessoa!.funcionario" formControlName="funcionario" autocomplete="off">
+          <label class="btn btn-sm btn-outline-info mx-2" for="check-funcionario">Func</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-8">
+          <div class="form-group">
+            <small for="" class="form-label">CPF / CNPJ</small>
+            <input type="text" class="form-control" [(ngModel)]="pessoa!.cpf_cnpj" formControlName="cpf_cnpj"
+              placeholder="cpf / cnpj">
+            <div *ngIf="pessoaForm.get('cpf_cnpj')?.errors?.['required'] && pessoaForm.get('cpf_cnpj')?.touched">
+              <small class="text-danger">Este campo é obrigatório</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-4">
+          <div class="form-group">
+            <small for="" class="form-label">Tipo</small>
+            <select [(ngModel)]="pessoa!.tipo" class="form-control" formControlName="tipo">
+              <option value="">Selecione</option>
+              <option value="f">Pessoa Fisica</option>
+              <option value="j">Pessoa Juridica</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+
+
+
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <small for="" class="form-label">Sexo</small>
+            <select [(ngModel)]="pessoa!.sexo" class="form-control" formControlName="sexo"
+              [attr.disabled]="pessoa!.tipo === 'j' ? true : null">
+              <option value="">Selecione</option>
+              <option value="m">Masculino</option>
+              <option value="f">Feminino</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-sm-4">
+          <div class="form-group">
+            <small for="" class="form-label">Data de nascimento</small>
+            <input type="date" [(ngModel)]="pessoa!.data_nascimento" class="form-control"
+              formControlName="data_nascimento">
+          </div>
+        </div>
+
+        <div class="col-sm-4">
+          <div class="form-group">
+            <small for="" class="form-label">telefone 1<output></output></small>
+            <input type="text" [(ngModel)]="pessoa!.telefone1" class="form-control" formControlName="telefone1">
+          </div>
+        </div>
+
+        <div class="col-sm-4">
+          <div class="form-group">
+            <small for="" class="form-label">Telefone 2</small>
+            <input type="text" [(ngModel)]="pessoa!.telefone2" class="form-control" formControlName="telefone2">
+          </div>
+        </div>
+
+        <div class="col-sm-4">
+          <div class="form-group">
+            <small for="" class="form-label">Telefone 3</small>
+            <input type="text" [(ngModel)]="pessoa!.telefone3" class="form-control" formControlName="telefone3">
+          </div>
+        </div>
+
+        <div class="col-sm-4">
+          <div class="form-group">
+            <small for="" class="form-label">E-mail</small>
+            <input type="email" [(ngModel)]="pessoa!.email" class="form-control" formControlName="email">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <small for="" class="form-label">CEP</small>
+            <input type="text" [(ngModel)]="pessoa!.cep" class="form-control" formControlName="cep">
+          </div>
+        </div>
+
+        <div class="col-sm-4">
+          <div class="form-group">
+            <small for="" class="form-label">UF</small>
+            <select [(ngModel)]="pessoa!.uf" class="form-control" formControlName="uf">
+              <option value="">Selecione</option>
+              <option value="AC">Acre</option>
+              <option value="AL">Alagoas</option>
+              <option value="AP">Amapá</option>
+              <option value="AM">Amazonas</option>
+              <option value="BA">Bahia</option>
+              <option value="CE">Ceará</option>
+              <option value="DF">Distrito Federal</option>
+              <option value="ES">Espírito Santo</option>
+              <option value="GO">Goiás</option>
+              <option value="MA">Maranhão</option>
+              <option value="MT">Mato Grosso</option>
+              <option value="MS">Mato Grosso do Sul</option>
+              <option value="MG">Minas Gerais</option>
+              <option value="PA">Pará</option>
+              <option value="PB">Paraíba</option>
+              <option value="PR">Paraná</option>
+              <option value="PE">Pernambuco</option>
+              <option value="PI">Piauí</option>
+              <option value="RJ">Rio de Janeiro</option>
+              <option value="RN">Rio Grande do Norte</option>
+              <option value="RS">Rio Grande do Sul</option>
+              <option value="RO">Rondônia</option>
+              <option value="RR">Roraima</option>
+              <option value="SC">Santa Catarina</option>
+              <option value="SP">São Paulo</option>
+              <option value="SE">Sergipe</option>
+              <option value="TO">Tocantins</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-sm-4">
+          <div class="form-group">
+            <small for="" class="form-label">Cidade</small>
+            <input type="text" [(ngModel)]="pessoa!.cidade" class="form-control" formControlName="cidade">
+          </div>
+        </div>
+
+        <div class="col-sm-4">
+          <div class="form-group">
+            <small for="" class="form-label">Bairro</small>
+            <input type="text" [(ngModel)]="pessoa!.bairro" class="form-control" formControlName="bairro">
+          </div>
+        </div>
+
+        <div class="col-sm-5">
+          <div class="form-group">
+            <small for="" class="form-label">Endereço</small>
+            <input type="text" [(ngModel)]="pessoa!.endereco" class="form-control" formControlName="endereco">
+          </div>
+        </div>
+
+        <div class="col-sm-3">
+          <div class="form-group">
+            <small for="" class="form-label">Número</small>
+            <input type="text" [(ngModel)]="pessoa!.numero" class="form-control" formControlName="numero">
+          </div>
+        </div>
+
+        <div class="col-sm-4">
+          <div class="form-group">
+            <small for="" class="form-label">Complemento</small>
+            <input type="text" [(ngModel)]="pessoa!.complemento" class="form-control" formControlName="complemento">
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class='modal-footer'>
+    <button #focar type="button" class="btn btn-dark" (click)="activeModal.close()">Fechar</button>
+    <button type="button" class="btn btn-primary" *ngIf="!pessoa_id" (click)="salvarPessoa()">Savar</button>
+    <button type="button" class="btn btn-primary" *ngIf="pessoa_id" (click)="editarPessoa()">Savar</button>
+  </div>
+</div>

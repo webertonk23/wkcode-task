@@ -16,7 +16,7 @@ class Pessoas extends Controller
      */
     public function index()
     {
-        return ModelsPessoas::all()->json();
+        return response()->json(ModelsPessoas::all());
     }
 
     /**
@@ -30,10 +30,10 @@ class Pessoas extends Controller
         $dados = $request->input();
 
         $pessoa = DB::transaction(function() use($dados){
-            return ModelsPessoas::created($dados);
+            return $pessoa = ModelsPessoas::create($dados);
         });
 
-        return $pessoa->json();
+        return response()->json($pessoa);
     }
 
     /**
@@ -44,7 +44,7 @@ class Pessoas extends Controller
      */
     public function show(ModelsPessoas $pessoa)
     {
-        return $pessoa->json();
+        return response()->json($pessoa);
     }
 
     /**
@@ -60,9 +60,9 @@ class Pessoas extends Controller
 
         $pessoa = DB::transaction(function() use($dados, $pessoa){
             return $pessoa->update($dados);
-        });        
-        
-        return $pessoa->json();
+        });
+
+        return response()->json($pessoa);
     }
 
     /**

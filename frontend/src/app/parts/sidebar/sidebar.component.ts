@@ -11,37 +11,37 @@ export class SidebarComponent {
     {
       route: '/',
       name:  'Dashboard',
-      icon: '',
+      icon: 'fa-tachometer',
       active: 'active' ?? '',
     },
     {
       route: '/pessoas',
       name:  'Pessoas',
-      icon: '',
+      icon: 'fa-users',
       active: 'active' ?? '',
     },
     {
       route: '/produtos',
       name:  'produtos',
-      icon: '',
+      icon: 'fa-cubes',
       active: 'active' ?? '',
     },
     {
       route: '/serviços',
       name:  'Serviços',
-      icon: '',
+      icon: 'fa-wrench',
       active: 'active' ?? '',
     },
     {
       route: '/vendas',
       name:  'Vendas',
-      icon: '',
+      icon: 'fa-cart-plus',
       active: 'active' ?? '',
     },
     {
       route: '/financeiro',
       name:  'Financeiro',
-      icon: '',
+      icon: 'fa-usd ',
       active: 'active' ?? '',
     },
   ]

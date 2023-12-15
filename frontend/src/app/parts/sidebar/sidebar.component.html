@@ -17,7 +17,7 @@
     <ul class="menu-inner py-1">
       <li class="menu-item" *ngFor="let link of links">
         <a routerLink="{{link.route}}" class="menu-link">
-          <i class="menu-icon "></i>
+          <i class="fa {{link.icon}}"></i>
           {{link.name}}
         </a>
       </li>

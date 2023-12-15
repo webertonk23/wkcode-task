@@ -1,5 +1,5 @@
 export interface Pessoa {
-  id: number,
+  id?: number,
   nome: string,
   cpf_cnpj: string,
   tipo: string,

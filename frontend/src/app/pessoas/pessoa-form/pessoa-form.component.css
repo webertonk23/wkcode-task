@@ -1,0 +1,8 @@
+.position-modal {
+  z-index: 1060 !important;
+}
+
+.modal-body {
+  max-height: 400px; /* Defina a altura máxima desejada */
+  overflow-y: auto; /* Adiciona uma barra de rolagem vertical quando necessário */
+}
