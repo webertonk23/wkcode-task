@@ -9,7 +9,8 @@ RUN echo "tzdata tzdata/Areas select Etc" | debconf-set-selections \
 RUN apt-get update && apt-get install -y \
     software-properties-common \
     libzip-dev \
-    unzip
+    unzip \
+    && docker-php-ext-install pdo_mysql
 
 # Habilita o módulo de reescrita do Apache
 RUN a2enmod rewrite
