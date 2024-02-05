@@ -8,16 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class ModuleController extends Controller
 {
-
-    public function index(){
-
-    }
-
-    public function create(){
-
-    }
-    
-    public function createModule(Request $request)
+    public function store(Request $request)
     {
         $dados = $request->input();
 
@@ -39,7 +30,7 @@ class ModuleController extends Controller
                     !empty($dados['test'])
                 );
             }
-            
+
             DB::commit();
             return response()->json(["Módulo criado com sucesso!"], 201);
         }catch(\Exception $e){
