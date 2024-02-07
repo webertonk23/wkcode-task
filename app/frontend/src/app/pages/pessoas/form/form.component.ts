@@ -13,7 +13,7 @@ import { BuscaCepService } from '../../../services/busca-cep.service';
 })
 export class FormComponent {
   @Input() title = '';
-  @Input() pessoa_id!: number;
+  @Input() pessoa_id!: string;
 
   pessoa?: Pessoas = {
     nome: '',
@@ -73,7 +73,8 @@ export class FormComponent {
 
   private getPessoa() {
     if (this.pessoa_id) {
-      this.pessoaService.getPessoa(this.pessoa_id).subscribe((result) => {
+      console.log(this.pessoa_id)
+      this.pessoaService.getPessoa(parseInt(this.pessoa_id)).subscribe((result) => {
         this.pessoa = result;
       });
     }
@@ -119,7 +120,7 @@ export class FormComponent {
     }
 
     try {
-      await this.pessoaService.updatePessoa(this.pessoa_id, formData).toPromise();
+      await this.pessoaService.updatePessoa(parseInt(this.pessoa_id), formData).toPromise();
 
       // this.snackBar.open('Sucesso!', 'Pessoa editada com sucesso!', {
       //   duration: 3000

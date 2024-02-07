@@ -26,7 +26,7 @@
             <a class="btn btn-sm btn-primary ml-1" [routerLink]="'./editar/'+item.id">
                 <i class="bi-pencil-square"></i>
             </a>
-            <button class="btn btn-sm btn-danger ml-1">
+            <button class="btn btn-sm btn-danger ml-1" (click)="delete(item.id!)">
                 <i class="bi-trash"></i>
             </button>
         </div>

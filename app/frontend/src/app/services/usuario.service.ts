@@ -5,6 +5,7 @@ import { IUsuario } from '../interfaces/IUsuarios';
 import { Observable, of } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
+import { throwError } from 'rxjs/internal/observable/throwError';
 
 const apiUrl = environment.apiUrl;
 
@@ -22,7 +23,6 @@ export class UsuarioService {
     return this.http.post<any>(apiUrl + "/auth/login", formLogin).pipe(
       tap((response) => {
         const token = response['access_token'];
-        console.log(response);
         if (token) {
           localStorage.setItem('token', btoa(JSON.stringify(token)));
           this.router.navigate(['']);
@@ -35,6 +35,20 @@ export class UsuarioService {
   deslogar() {
     localStorage.clear();
     this.router.navigate(['login']);
+  }
+
+  refresh(): Observable<any> {
+    return this.http.post<any>(apiUrl + "/auth/refresh", {}).pipe(
+      tap((response) => {
+        const token = response['access_token'];
+        console.log(response);
+        if (token) {
+          localStorage.setItem('token', btoa(JSON.stringify(token)));
+        }else{
+          this.deslogar();
+          throwError('Unauthorized');
+        }        
+      }));
   }
 
   // get obterUsuarioLogado(): IUsuario {

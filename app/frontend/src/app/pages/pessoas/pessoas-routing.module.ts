@@ -8,7 +8,7 @@ import { CriarComponent } from './criar/criar.component';
 const routes: Routes = [
   { path: '', component: PessoasComponent },
   { path: 'criar', component: CriarComponent },
-  { path: 'editar', component: EditarComponent },
+  { path: 'editar/:id', component: EditarComponent },
 ];
 
 @NgModule({
