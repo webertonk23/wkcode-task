@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { IUsuario } from '../../interfaces/IUsuarios';
 import { UsuarioService } from '../../services/usuario.service';
 
@@ -16,7 +15,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private usuarioService: UsuarioService,
-    private snackBar: MatSnackBar
+
   ) {  }
 
   ngOnInit(): void {
@@ -32,9 +31,9 @@ export class LoginComponent implements OnInit {
     var usuario = this.formLogin!.getRawValue() as IUsuario;
     this.usuarioService.logar(usuario).subscribe((response) => {
       if (!response.sucesso) {
-        this.snackBar.open('Falha na autenticação', 'Usuário ou senha incorretos.', {
-          duration: 3000
-        });
+        // this.snackBar.open('Falha na autenticação', 'Usuário ou senha incorretos.', {
+        //   duration: 3000
+        // });
       }
     })
   }

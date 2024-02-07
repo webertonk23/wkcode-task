@@ -1,0 +1,77 @@
+<div class="card card-body">
+        <h3 class="card-title">{{ title }}</h3>
+
+        <form [formGroup]="pessoaForm">
+            <div class="form-group my-2">
+                <label>Nome</label>
+                <input type="text" class="form-control" [(ngModel)]="pessoa!.nome" formControlName="nome">            
+            </div>
+
+            <div class="form-group my-2">
+                <label>CPF</label>
+                <input
+                    type="text" class="form-control" mask="000.000.000-00"
+                    [(ngModel)]="pessoa!.cpf" formControlName="cpf"
+                >            
+            </div>
+
+            <div class="form-group my-2">
+                <label>E-mail</label>
+                <input type="email" class="form-control" [(ngModel)]="pessoa!.email" formControlName="email">            
+            </div>
+
+            <div class="row">
+                <div class="form-group my-2 col-md-3">
+                    <label>CEP</label>
+                    <input
+                        type="text" class="form-control" class="form-control"
+                        [(ngModel)]="pessoa!.cep" formControlName="cep"
+                        (blur)="getCep()" mask="00000-000"
+                    >            
+                </div>
+    
+                <div class="form-group my-2 col-md-6">
+                    <label>Logradouro</label>
+                    <input type="text" class="form-control" [(ngModel)]="pessoa!.logradouro" formControlName="logradouro">            
+                </div>
+    
+                <div class="form-group my-2 col-md-3">
+                    <label>Número</label>
+                    <input type="text" class="form-control" [(ngModel)]="pessoa!.numero" formControlName="numero">            
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="form-group my-2 col-md-4">
+                    <label>Complemento</label>
+                    <input type="text" class="form-control" [(ngModel)]="pessoa!.complemento" formControlName="complemento">            
+                </div>
+    
+                <div class="form-group my-2 col-md-4">
+                    <label>Bairro</label>
+                    <input type="text" class="form-control" [(ngModel)]="pessoa!.bairro" formControlName="bairro">            
+                </div>
+    
+                <div class="form-group my-2 col-md-4">
+                    <label>Cidade</label>
+                    <input type="text" class="form-control" [(ngModel)]="pessoa!.cidade" formControlName="cidade">            
+                </div>
+    
+                <div class="form-group my-2 col-md-4">
+                    <label>Estado</label>
+                    <input type="text" class="form-control" [(ngModel)]="pessoa!.uf" formControlName="uf">            
+                </div>
+            </div>
+            
+
+            <!-- telefone: [this.pessoa?.telefones ?? []], -->
+    
+        </form>
+
+    <div class="text-end">
+        <a class="btn " routerLink="/pessoas">Voltar</a>
+        <button class="btn btn-success" *ngIf="!pessoa_id" (click)="salvarPessoa()">salvar</button>
+        <button class="btn btn-success" *ngIf="pessoa_id" (click)="editarPessoa()">salvar</button>
+    </div>
+</div>

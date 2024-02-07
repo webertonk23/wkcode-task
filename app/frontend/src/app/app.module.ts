@@ -8,20 +8,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { MatCardModule } from '@angular/material/card';
-import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatIconModule } from '@angular/material/icon';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { MatTooltipModule } from '@angular/material/tooltip';
-
 import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { PrincipalComponent } from './pages/compartilhado/principal/principal.component';
 import { TokenInterceptor } from './services/interceptors/token.interceptor';
-import { PessoasModule } from './pages/pessoas/pessoas.module';
+import { NavbarComponent } from './pages/compartilhado/navbar/navbar.component';
+import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
+import { provideEnvironmentNgxMask } from 'ngx-mask';
 
 @NgModule({
   declarations: [
@@ -29,6 +22,7 @@ import { PessoasModule } from './pages/pessoas/pessoas.module';
     LoginComponent,
     HomeComponent,
     PrincipalComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,20 +31,12 @@ import { PessoasModule } from './pages/pessoas/pessoas.module';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    MatCardModule,
-    MatInputModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatToolbarModule,
-    MatSnackBarModule,
-    MatTooltipModule,
-
-    PessoasModule
+    NgbCollapseModule
   ],
   providers: [
     provideAnimationsAsync(),
-    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
+    provideEnvironmentNgxMask()
   ],
   bootstrap: [AppComponent]
 })

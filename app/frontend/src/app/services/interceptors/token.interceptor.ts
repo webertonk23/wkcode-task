@@ -19,7 +19,8 @@ export class TokenInterceptor implements HttpInterceptor {
       request = request.clone({
         setHeaders: {
           Authorization: `Bearer ${token}`,
-          token: `${token}`
+          token: `${token}`,
+          'Content-Type': 'application/json'
         }
       });
       return next.handle(request).pipe(catchError(error => {

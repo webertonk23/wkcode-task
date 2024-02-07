@@ -4,14 +4,18 @@ import { LoginComponent } from './pages/login/login.component';
 import { PrincipalComponent } from './pages/compartilhado/principal/principal.component';
 import { HomeComponent } from './pages/home/home.component';
 import { AuthGuard } from './services/guards/auth.guard';
-import { PessoasComponent } from './pages/pessoas/pessoas.component';
 
 const routes: Routes = [
   {
-    path: '', component: PrincipalComponent, canActivate: [AuthGuard],
+    path: '',
+    component: PrincipalComponent,
+    canActivate: [AuthGuard],
     children: [
-      {path: '', component: HomeComponent},
-      {path: 'pessoas', component: PessoasComponent},
+      {path: '', component: HomeComponent, pathMatch: 'full'},
+      {
+        path: 'pessoas',
+        loadChildren: () => import('./pages/pessoas/pessoas.module').then(m => m.PessoasModule)
+      },
     ]
   },
   {path: 'login', component: LoginComponent},

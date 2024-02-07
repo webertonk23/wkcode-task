@@ -23,7 +23,7 @@ class CreatePessoasRequest extends FormRequest
     {
         return [
             'nome' => ['required'],
-            'cpf' => ['required', 'cpf', 'max:14'],
+            'cpf' => ['required'],
             'logradouro' => 'nullable',
             'numero' => ['nullable'],
             'complemento' => ['nullable'],

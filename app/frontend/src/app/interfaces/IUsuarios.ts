@@ -1,5 +1,5 @@
-export interface IUsuario{
-    id: string,
-    email: string;
-    password?: string
-  }
+export interface IUsuario {
+  id?: string,
+  email: string;
+  password?: string
+}
