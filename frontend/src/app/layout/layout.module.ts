@@ -7,11 +7,14 @@ import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrModule } from 'ngx-toastr';
 import { ComponentsModule } from '../pages/compartilhado/components.module';
+import { DashboardComponent } from '../pages/dashboard/dashboard.component';
 
 
 @NgModule({
   declarations: [
-    LayoutComponent
+    LayoutComponent,
+    DashboardComponent
+    
   ],
   imports: [
     CommonModule,

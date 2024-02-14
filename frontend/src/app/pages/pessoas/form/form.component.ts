@@ -53,6 +53,7 @@ export class FormComponent {
       cidade: [this.pessoa?.cidade ?? ''],
       uf: [this.pessoa?.uf ?? ''],
       cep: [this.pessoa?.cep ?? ''],
+      telefones : this.fb.array(this.pessoa!.telefones ?? [])
     });
   }
 
@@ -73,7 +74,6 @@ export class FormComponent {
 
   private getPessoa() {
     if (this.pessoa_id) {
-      console.log(this.pessoa_id)
       this.pessoaService.getPessoa(parseInt(this.pessoa_id)).subscribe((result) => {
         this.pessoa = result;
       });

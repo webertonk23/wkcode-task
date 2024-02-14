@@ -18,11 +18,13 @@ import { LoginComponent } from './pages/login/login.component';
 import { TokenInterceptor } from './services/interceptors/token.interceptor';
 import { ComponentsModule } from './pages/compartilhado/components.module';
 import { LayoutComponent } from './layout/layout.component';
+import { LayoutModule } from './layout/layout.module';
+import { LoadingComponent } from './pages/compartilhado/loading/loading.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -34,6 +36,7 @@ import { LayoutComponent } from './layout/layout.component';
     AppRoutingModule,
     ReactiveFormsModule,
     NgbModule,
+    LayoutModule,
     ToastrModule.forRoot()
   ],
   providers: [

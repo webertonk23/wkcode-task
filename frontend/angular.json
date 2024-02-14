@@ -36,6 +36,10 @@
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/perfect-scrollbar/css/perfect-scrollbar.css",
+              "node_modules/ngx-toastr/toastr.css",
+              "src/assets/scss/now-ui-dashboard.scss",
+              "src/assets/demo/demo.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -95,11 +99,6 @@
               "src/assets"
             ],
             "styles": [
-              "node_modules/perfect-scrollbar/css/perfect-scrollbar.css",
-              "node_modules/bootstrap/dist/css/bootstrap.css",
-              "node_modules/ngx-toastr/toastr.css",
-              "src/assets/scss/now-ui-dashboard.scss",
-              "src/assets/demo/demo.css",
               "src/styles.css"
             ],
             "scripts": []

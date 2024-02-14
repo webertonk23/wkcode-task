@@ -6,6 +6,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { LoadingComponent } from './loading/loading.component';
 
 
 
@@ -13,7 +14,8 @@ import { NavbarComponent } from './navbar/navbar.component';
   declarations: [
     SidebarComponent,
     FooterComponent,
-    NavbarComponent
+    NavbarComponent,
+    LoadingComponent
   ],
   imports: [
     CommonModule,
@@ -23,7 +25,8 @@ import { NavbarComponent } from './navbar/navbar.component';
   exports: [
     SidebarComponent,
     FooterComponent,
-    NavbarComponent
+    NavbarComponent,
+    LoadingComponent
   ]
 })
 export class ComponentsModule { }

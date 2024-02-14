@@ -1,13 +1,11 @@
-<h3>Pessoas</h3>
-
 <div class="card card-body">
     <div class="row">
         <div class="form-group col-md-10">
             <input class="form-control" placeholder="Buscar" type="search">
         </div>
 
-        <div class="col-md-2">
-            <a class="btn btn-sm form-control btn-primary" routerLink="./criar">
+        <div class="form-group col-md-2">
+            <a class="btn form-control btn-primary my-0" routerLink="./criar">
                 <i class="bi-plus"></i>
             </a>
 
@@ -16,19 +14,21 @@
 </div>
 
 <div class="row">
-    <div class="card m-3 col-md-4 p-0" *ngFor="let item of pessoas">
-        <div class="card-body">
-            <h5 class="card-title">{{ item.nome }}</h5>
-            <label clas="card-text">{{ item.cpf }}</label>
-        </div>
-
-        <div class="card-footer text-end">
-            <a class="btn btn-sm btn-primary ml-1" [routerLink]="'./editar/'+item.id">
-                <i class="bi-pencil-square"></i>
-            </a>
-            <button class="btn btn-sm btn-danger ml-1" (click)="delete(item.id!)">
-                <i class="bi-trash"></i>
-            </button>
+    <div class="col-md-6 my-2" *ngFor="let item of pessoas">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">{{ item.nome }}</h5>
+                <label clas="card-text">{{ item.cpf }}</label>
+            </div>
+        
+            <div class="card-footer text-end">
+                <a class="btn btn-sm btn-primary mx-1" [routerLink]="'./editar/'+item.id">
+                    <i class="bi-pencil-square"></i>
+                </a>
+                <button class="btn btn-sm btn-danger mx-1" (click)="delete(item.id!)">
+                    <i class="bi-trash"></i>
+                </button>
+            </div>
         </div>
     </div>
 </div>

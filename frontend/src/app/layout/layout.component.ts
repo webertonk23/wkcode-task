@@ -95,4 +95,12 @@ export class LayoutComponent implements OnInit {
     return bool;
   }
 
+  getBread() {
+    let bread = this.location.prepareExternalUrl(this.location.path());
+
+    bread = bread.slice(1);
+    
+    return bread.split('/')
+  }
+
 }

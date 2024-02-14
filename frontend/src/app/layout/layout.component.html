@@ -1,3 +1,4 @@
+<app-loading></app-loading>
 <div class="wrapper">
     <div class="sidebar" data-color="red">
         <app-sidebar />
@@ -5,7 +6,19 @@
 
     <div class="main-panel">
         <app-navbar />
-        <router-outlet />
-        <app-footer />
+        <div class="container" style="margin-top: 70px;">
+            <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item" *ngFor="let i of getBread()">
+                        <small>
+                            <a style="text-transform: capitalize">{{i}}</a>
+                        </small>
+                    </li>
+                    <!-- <li class="breadcrumb-item active" aria-current="page">Library</li> -->
+                </ol>
+            </nav>
+            <router-outlet />
+        </div>
     </div>
+    <!-- <app-footer /> -->
 </div>
