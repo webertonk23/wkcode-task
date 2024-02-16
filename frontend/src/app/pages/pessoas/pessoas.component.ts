@@ -10,10 +10,11 @@ import { PessoasService } from '../../services/pessoas.service';
   templateUrl: './pessoas.component.html',
   styleUrl: './pessoas.component.css'
 })
-export class PessoasComponent implements OnInit{
+export class PessoasComponent implements OnInit {
   pessoas?: Pessoas[];
+  filter?: Pessoas[];
 
-  constructor( 
+  constructor(
     private pessoasService: PessoasService
   ) { }
 
@@ -21,11 +22,22 @@ export class PessoasComponent implements OnInit{
     this.getPessoas();
   }
 
-  getPessoas(){
+  getPessoas() {
     this.pessoasService.getPessoas().subscribe({
-      next: (res) => this.pessoas = res,
+      next: (res) => {
+        this.pessoas = res
+        this.filter = res
+      },
       error: (err) => console.log(err),
     })
+  }
+  pesquisa(e: Event): void {
+    const target = e.target as HTMLInputElement;
+    const value = target.value;
+
+    this.pessoas = this.filter!.filter((item) => {
+      return item.nome.toLocaleLowerCase().includes(value);
+    });
   }
 
   delete(pessoa_id: string) {

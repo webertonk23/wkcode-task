@@ -26,6 +26,7 @@ export class UsuarioService {
         if (token) {
           localStorage.setItem('token', btoa(JSON.stringify(token)));
           this.router.navigate(['']);
+          return true;
         }else{
           return;
         }        

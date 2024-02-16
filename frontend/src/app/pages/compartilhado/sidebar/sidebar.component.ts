@@ -10,8 +10,7 @@ export const ROUTES: RouteInfo[] = [
     { path: '/dashboard', title: 'Dashboard',  icon: 'design_app', class: '' },
     { path: '/pessoas', title: 'Pessoas',  icon: 'bi-people-fill', class: '' },
     { path: '/status', title: 'Status',  icon:'education_atom', class: '' },
-    // { path: '/maps', title: 'Maps',  icon:'location_map-big', class: '' },
-    // { path: '/notifications', title: 'Notifications',  icon:'ui-1_bell-53', class: '' },
+    { path: '/projetos', title: 'Projetos',  icon:'bi-bezier2', class: '' },
 
     // { path: '/user-profile', title: 'User Profile',  icon:'users_single-02', class: '' },
     // { path: '/table-list', title: 'Table List',  icon:'design_bullet-list-67', class: '' },

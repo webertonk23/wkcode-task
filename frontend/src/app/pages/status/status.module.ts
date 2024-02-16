@@ -1,21 +1,25 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NgxMaskDirective } from 'ngx-mask';
+import { ToastrModule } from 'ngx-toastr';
 
 import { StatusRoutingModule } from './status-routing.module';
 import { StatusComponent } from './status.component';
-import { ReactiveFormsModule } from '@angular/forms';
-import { NgxMaskDirective } from 'ngx-mask';
+import { FormComponent } from './form/form.component';
 
 
 @NgModule({
   declarations: [
-    StatusComponent
+    StatusComponent,
+    FormComponent
   ],
   imports: [
     CommonModule,
     StatusRoutingModule,
     ReactiveFormsModule,
-    NgxMaskDirective
+    NgxMaskDirective,
+    ToastrModule.forRoot()
   ]
 })
 export class StatusModule { }

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Pessoas } from '../../../interfaces/Pessoas';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -11,7 +11,7 @@ import { BuscaCepService } from '../../../services/busca-cep.service';
   templateUrl: './form.component.html',
   styleUrl: './form.component.css'
 })
-export class FormComponent {
+export class FormComponent implements OnInit{
   @Input() title = '';
   @Input() pessoa_id!: string;
 

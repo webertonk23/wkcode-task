@@ -1,0 +1,33 @@
+<nav class="navbar navbar-expand-lg bg-white">
+    <div class="container">
+        <div class="navbar-translate">
+            <a class="navbar-brand">
+                {{projeto!.titulo}}
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
+                aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-bar bar1"></span>
+                <span class="navbar-toggler-bar bar2"></span>
+                <span class="navbar-toggler-bar bar3"></span>
+            </button>
+        </div>
+
+        <div class="collapse navbar-collapse d-flex justify-content-between" id="navigation">
+            <ul class="navbar-nav">
+                <li class="nav-item active"><i class="nav-link bi-kanban-fill"></i></li>
+                <li class="nav-item"><i class="nav-link bi-calendar3-range"></i></li>
+                <li class="nav-item"><i class="nav-link bi-card-list"></i></li>
+            </ul>
+
+            <ul class="navbar-nav actions">
+                <li class="nav-item"><i class="bi-node-plus-fill nav-link"></i></li>
+                <li class="nav-item"><i class="bi-plus-square nav-link"></i></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="py-2">
+    <app-tasks-kanban />
+</div>

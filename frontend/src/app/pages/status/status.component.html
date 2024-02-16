@@ -1,1 +1,36 @@
-<p>status works!</p>
+<div class="card card-body">
+    <div class="row">
+        <div class="form-group col-md-10">
+            <input class="form-control" placeholder="Buscar" type="search">
+        </div>
+
+        <div class="form-group col-md-2">
+            <a class="btn form-control btn-primary my-0" routerLink="./criar">
+                <i class="bi-plus"></i>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6 my-2" *ngFor="let item of status">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title lead">
+                    <i class="bi-circle-fill" [style]="'height: 30px; color: '+item.cor+';'"></i> 
+                    {{ item.titulo }}
+                </h5>
+
+            </div>
+
+            <div class="card-footer text-end">
+                <a class="btn btn-sm btn-primary mx-1" [routerLink]="'./editar/'+item.id">
+                    <i class="bi-pencil-square"></i>
+                </a>
+                <button class="btn btn-sm btn-danger mx-1" (click)="delete(item.id!)">
+                    <i class="bi-trash"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -7,18 +7,19 @@ const routes: Routes = [
   {
     path: 'pessoas',
     loadChildren: () => import('../pages/pessoas/pessoas.module').then(m => m.PessoasModule)
-  },
+  },  
   {
     path: 'status',
     loadChildren: () => import('../pages/status/status.module').then(m => m.StatusModule)
   },
-  // { path: 'pessoas', component: UserProfileComponent },
-  // { path: 'table-list', component: TableListComponent },
-  // { path: 'typography', component: TypographyComponent },
-  // { path: 'icons', component: IconsComponent },
-  // { path: 'maps', component: MapsComponent },
-  // { path: 'notifications', component: NotificationsComponent },
-  // { path: 'upgrade', component: UpgradeComponent }
+  {
+    path: 'projetos',
+    loadChildren: () => import('../pages/projetos/projetos.module').then(m => m.ProjetosModule)
+  },
+  {
+    path: 'sprints',
+    loadChildren: () => import('../pages/sprints/sprints.module').then(m => m.SprintsModule)
+  },
 ];
 
 @NgModule({

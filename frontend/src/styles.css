@@ -8,3 +8,34 @@
     font-family: sans-serif, Roboto, "Helvetica Neue";
 }
 html, body { height: 100%; }
+
+.form-control-color {
+    width: 3rem;
+    height: calc(1.5em + 0.75rem + calc(var(--bs-border-width) * 2));
+    padding: 0.375rem;
+  }
+  .form-control-color:not(:disabled):not([readonly]) {
+    cursor: pointer;
+  }
+  .form-control-color::-moz-color-swatch {
+    border: 0 !important;
+    border-radius: var(--bs-border-radius);
+  }
+  .form-control-color::-webkit-color-swatch {
+    border: 0 !important;
+    border-radius: var(--bs-border-radius);
+  }
+  .form-control-color.form-control-sm {
+    height: calc(1.5em + 0.5rem + calc(var(--bs-border-width) * 2));
+  }
+  .form-control-color.form-control-lg {
+    height: calc(1.5em + 1rem + calc(var(--bs-border-width) * 2));
+  }
+
+  .was-validated .form-control-color:valid, .form-control-color.is-valid {
+    width: calc(3rem + calc(1.5em + 0.75rem));
+  }
+
+  .was-validated .form-control-color:invalid, .form-control-color.is-invalid {
+    width: calc(3rem + calc(1.5em + 0.75rem));
+  }

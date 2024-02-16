@@ -1,0 +1,39 @@
+<div class="card card-body">
+    <div class="row">
+        <div class="form-group col-md-10">
+            <input class="form-control" placeholder="Buscar" type="search">
+        </div>
+
+        <div class="form-group col-md-2">
+            <a class="btn form-control btn-primary my-0" routerLink="./criar">
+                <i class="bi-plus"></i>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="col-md" *ngFor="let item of projetos">
+    <div class="card">
+        <div class="card-body">
+            <div class="d-flex justify-content-between">
+                <div class="description col-md-10 align-middle">
+                    <label class="lead">
+                        {{ item.titulo }}
+                    </label>
+                </div>
+    
+                <div class="actions col-md-2 text-end">
+                    <span class="mx-1 text-info" (click)="open(item.id!)">
+                        <i class="bi-list-task"></i>
+                    </span>
+                    <a class="mx-1" [routerLink]="'./editar/'+item.id">
+                        <i class="bi-pencil-square"></i>
+                    </a>
+                    <span class="mx-1 text-danger" (click)="delete(item.id!)">
+                        <i class="bi-trash"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

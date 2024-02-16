@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IUsuario } from '../../interfaces/IUsuarios';
 import { UsuarioService } from '../../services/usuario.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -15,6 +16,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private usuarioService: UsuarioService,
+    private toastr: ToastrService
 
   ) {  }
 
@@ -30,10 +32,9 @@ export class LoginComponent implements OnInit {
     if (this.formLogin!.invalid) return;
     var usuario = this.formLogin!.getRawValue() as IUsuario;
     this.usuarioService.logar(usuario).subscribe((response) => {
-      if (!response.sucesso) {
-        // this.snackBar.open('Falha na autenticação', 'Usuário ou senha incorretos.', {
-        //   duration: 3000
-        // });
+      console.log(response);
+      if (!response) {
+        this.toastr.error('Falha na autenticação', 'Usuário ou senha incorretos.');
       }
     })
   }

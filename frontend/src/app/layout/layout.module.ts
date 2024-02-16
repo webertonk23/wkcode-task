@@ -8,6 +8,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrModule } from 'ngx-toastr';
 import { ComponentsModule } from '../pages/compartilhado/components.module';
 import { DashboardComponent } from '../pages/dashboard/dashboard.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { LoadingInterceptor } from '../services/interceptors/loading.interceptor';
 
 
 @NgModule({
@@ -23,6 +25,9 @@ import { DashboardComponent } from '../pages/dashboard/dashboard.component';
     NgbModule,
     ToastrModule.forRoot(),
     ComponentsModule
+  ],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true },
   ]
 })
 export class LayoutModule { }
