@@ -10,6 +10,8 @@ import { ProjetosComponent } from './projetos.component';
 import { FormComponent } from './form/form.component';
 import { TasksComponent } from './tasks/tasks.component';
 import { TasksKanbanComponent } from './tasks/tasks-kanban/tasks-kanban.component';
+import { TaskModalComponent } from './tasks/task-modal/task-modal.component';
+import { SprintModalComponent } from './tasks/sprint-modal/sprint-modal.component';
 
 
 
@@ -18,7 +20,9 @@ import { TasksKanbanComponent } from './tasks/tasks-kanban/tasks-kanban.componen
     ProjetosComponent,
     FormComponent,
     TasksComponent,
-    TasksKanbanComponent
+    TasksKanbanComponent,
+    TaskModalComponent,
+    SprintModalComponent
   ],
   imports: [
     CommonModule,

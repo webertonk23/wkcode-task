@@ -1,0 +1,97 @@
+<div class="modal-header">
+    <h5 class="modal-title">{{titleText}}</h5>
+</div>
+<div class='modal-body'>
+    <form [formGroup]="form">
+        <div class="row">
+            <div class="form-group col-sm-10">
+                <input type="text" class="form-control border-0"
+                    [(ngModel)]="task!.titulo"
+                    formControlName="titulo"
+                    placeholder="Insira um titulo para a tarefa"
+                >
+                <div *ngIf="form.get('titulo')?.errors?.['required'] && form.get('titulo')?.touched">
+                  <small class="text-danger">Este campo é obrigatório</small>
+                </div>
+            </div>
+
+            <div class="form-group col-sm-2">
+                <input type="text" class="form-control border-0"
+                    [(ngModel)]="task!.status_id"
+                    formControlName="status_id"
+                    placeholder="status"
+                >
+                <div *ngIf="form.get('status_id')?.errors?.['required'] && form.get('status_id')?.touched">
+                  <small class="text-danger">Este campo é obrigatório</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="card card-body">
+            <div class="row">
+                <div class="col-sm-9">
+                    <div class="form-group">
+                        <textarea 
+                            class="form-control"
+                            [(ngModel)]="task!.descricao"
+                            formControlName="descricao"
+                            placeholder="Descreva a tarefa"
+                            rows="8"
+                        ></textarea>
+                        <div *ngIf="form.get('descricao')?.errors?.['required'] && form.get('descricao')?.touched">
+                            <small class="text-danger">Este campo é obrigatório</small>
+                      </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label class="form-label">Duração prevista</label>
+                        <input type="time" class="form-control"
+                            [(ngModel)]="task!.duracao_prevista"
+                            formControlName="duracao_prevista"
+                        >
+                        <div *ngIf="form.get('duracao_prevista')?.errors?.['required'] && form.get('duracao_prevista')?.touched">
+                              <small class="text-danger">Este campo é obrigatório</small>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Inicio</label>
+                        <input type="datetime-local" class="form-control"
+                            [(ngModel)]="task!.inicio"
+                            formControlName="inicio"
+                        >
+                        <div *ngIf="form.get('inicio')?.errors?.['required'] && form.get('inicio')?.touched">
+                              <small class="text-danger">Este campo é obrigatório</small>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Fim</label>
+                        <input type="datetime-local" class="form-control"
+                            [(ngModel)]="task!.fim"
+                            formControlName="fim"
+                        >
+                        <div *ngIf="form.get('fim')?.errors?.['required'] && form.get('fim')?.touched">
+                              <small class="text-danger">Este campo é obrigatório</small>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Duração</label>
+                        <input type="time" class="form-control"
+                            [(ngModel)]="task!.duracao"
+                            formControlName="duracao_prevista"
+                        >
+                        <div *ngIf="form.get('duracao')?.errors?.['required'] && form.get('duracao')?.touched">
+                              <small class="text-danger">Este campo é obrigatório</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class='modal-footer'>
+    <button #focar type="button" class="btn btn-dark" (click)="activeModal.close()">Fechar</button>
+    <button type="button" class="btn btn-primary" *ngIf="!task_id" (click)="salvarTask()">Savar</button>
+    <button type="button" class="btn btn-primary" *ngIf="task_id" (click)="editarTask()">Savar</button>
+</div>

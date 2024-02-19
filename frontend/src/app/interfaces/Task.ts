@@ -1,3 +1,5 @@
+import { Status } from "./Status";
+
 export interface Task {
     id?: string,
     titulo: string,
@@ -9,6 +11,7 @@ export interface Task {
     duracao_prevista: string,
     duracao?: string,
     status_id?: string,
+    status?: Status
     situacao?: string,
     pessoa_id?: string,
     formulario?: string,
